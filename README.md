@@ -1,3 +1,9 @@
+<p align="center">
+    <a href="#tell-me-a-secret">
+        <img alt="logo" src="logo/150x120.png">
+    </a>
+</p>
+
 # Tell me a secret
 
 [![build](https://ci.appveyor.com/api/projects/status/github/tallesl/TellMeASecret)](https://ci.appveyor.com/project/TallesL/TellMeASecret)
