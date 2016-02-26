@@ -2,6 +2,7 @@
 {
     using ElementAtLibrary;
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Security.Cryptography;
     using System.Text;
@@ -10,7 +11,7 @@
     /// <summary>
     /// Tells secrets.
     /// </summary>
-    public class SecretTeller : IDisposable
+    public sealed class SecretTeller : IDisposable
     {
         /// <summary>
         /// Optional salt append on input before hashing.
@@ -35,6 +36,8 @@
         /// <summary>
         /// Ctor.
         /// </summary>
+        [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope",
+            Justification = "It's disposed on by the class itself.")]
         public SecretTeller()
             : this("bcdfghjklmnpqrstvwxz", "aeiou", SHA1.Create(), string.Empty) { }
 
@@ -43,6 +46,8 @@
         /// </summary>
         /// <param name="consonants">Alphabet of consonants</param>
         /// <param name="vowels">Alphabet of vowels</param>
+        [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope",
+            Justification = "It's disposed on by the class itself.")]
         public SecretTeller(string consonants, string vowels) :
             this(consonants, vowels, SHA1.Create(), string.Empty) { }
 
@@ -140,7 +145,7 @@
             return new Tuple<char[], char[]>(current, next);
         }
 
-        private string SecretIt(byte[] hash, int secretLength, Tuple<char[], char[]> alphabets)
+        private static string SecretIt(byte[] hash, int secretLength, Tuple<char[], char[]> alphabets)
         {
             var current = alphabets.Item1;
             var next = alphabets.Item2;
