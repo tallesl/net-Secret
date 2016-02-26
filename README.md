@@ -1,48 +1,46 @@
 <p align="center">
-    <a href="#tell-me-a-secret">
-        <img alt="logo" src="logo/150x120.png">
+    <a href="#secret">
+        <img alt="logo" src="Assets/logo-200x200.png">
     </a>
 </p>
 
-# Tell me a secret
+# Secret
 
-[![build](https://ci.appveyor.com/api/projects/status/github/tallesl/TellMeASecret)](https://ci.appveyor.com/project/TallesL/TellMeASecret)
-[![nuget package](https://badge.fury.io/nu/TellMeASecret.png)](http://badge.fury.io/nu/TellMeASecret)
+[![][build-img]][build]
+[![][nuget-img]][nuget]
 
-A friendly secret generator ([shouldn't be used for actual secure passwords](http://security.stackexchange.com/questions/211/how-to-securely-hash-passwords)).
+You tell me something and I give you back a secret.
 
-## Example
-
-```csharp
-using TellMeASecret;
-
-using (var secretTeller = new SecretTeller())
-{
-    secretTeller.Tell("some text"); // returns "tazutiwu"
-}
-```
+[build]:     https://ci.appveyor.com/project/TallesL/net-secret
+[build-img]: https://ci.appveyor.com/api/projects/status/github/tallesl/net-secret?svg=true
+[nuget]:     https://www.nuget.org/packages/Secret
+[nuget-img]: https://badge.fury.io/nu/Secret.svg
 
 ## Usage
 
-There are 5 constructors overload:
+```cs
+using SecretLibrary;
 
-```csharp
-SecretTeller()
-SecretTeller(string salt)
-SecretTeller(IEnumerable<char> consonants, IEnumerable<char> vowels)
-SecretTeller(HashAlgorithm hashAlgorithm)
-SecretTeller(IEnumerable<char> consonants, IEnumerable<char> vowels, HashAlgorithm hashAlgorithm, string salt)
+using (var teller = new SecretTeller())
+{
+    teller.Tell("Hello world!");  // returns "pijozabe"
+    teller.Tell("Hello secret?"); // returns "qoxefewe"
+}
 ```
 
-With the defaults of:
+The defaults are:
 
-* **consonants**: `b`, `c`, `d`, `f`, `g`, `h`, `j`, `k`, `l`, `m`, `n`, `p`, `q`, `r`, `s`, `t`, `v`, `w`, `x`, `z`;
-* **vowels**: `a`, `e`, `i`, `o`, `u`;
-* [**hashAlgorithm**](https://msdn.microsoft.com/library/system.security.cryptography.hashalgorithm.aspx): [SHA1](https://msdn.microsoft.com/library/system.security.cryptography.sha1.aspx);
-* [**salt**](http://en.wikipedia.org/wiki/Salt_%28cryptography%29): [empty string](https://msdn.microsoft.com/library/system.string.empty.aspx).
+* **consonants**: `"bcdfghjklmnpqrstvwxz"`;
+* **vowels**: `"aeiou"`;
+* **hashAlgorithm**: [SHA1];
+* **salt**: [empty string](https://msdn.microsoft.com/library/system.string.empty.aspx).
+
+[SHA1]:              https://msdn.microsoft.com/library/System.Security.Cryptography.SHA1
+[empty string]:      https://msdn.microsoft.com/library/System.String.Empty
 
 ## How it works
 
-It's a cheap trick: it hashes your input and, with the hash bytes, picks *consonant + vogal* pairs forming the so called *secret* (no fancy [NLP](http://en.wikipedia.org/wiki/Natural_language_processing) here).
+It's a cheap trick: it hashes your input and, with the hash bytes, picks consonant + vogal pairs forming the so called
+secret (no fancy [NLP] here).
 
-If the desired length is odd the word starts with a vowel.
+[NLP]: http://en.wikipedia.org/wiki/Natural_language_processing

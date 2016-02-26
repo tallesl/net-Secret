@@ -9,8 +9,8 @@
     <ProjectGuid>{24170383-88DA-4026-ABB5-B0786B48CD82}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TellMeASecret.Tests</RootNamespace>
-    <AssemblyName>TellMeASecret.Tests</AssemblyName>
+    <RootNamespace>SecretLibrary.Tests</RootNamespace>
+    <AssemblyName>Secret.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -45,14 +45,13 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Telling.cs" />
+    <Compile Include="Tests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TellMeASecret\TellMeASecret.csproj">
-      <Project>{74E91D2E-C239-4EE7-ABD7-22A3E27B8554}</Project>
-      <Name>TellMeASecret</Name>
+    <ProjectReference Include="..\Library\Library.csproj">
+      <Project>{74e91d2e-c239-4ee7-abd7-22a3e27b8554}</Project>
+      <Name>Library</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

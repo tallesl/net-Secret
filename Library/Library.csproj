@@ -8,8 +8,8 @@
     <ProjectGuid>{74E91D2E-C239-4EE7-ABD7-22A3E27B8554}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TellMeASecret</RootNamespace>
-    <AssemblyName>TellMeASecret</AssemblyName>
+    <RootNamespace>SecretLibrary</RootNamespace>
+    <AssemblyName>Secret</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -29,11 +29,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\TellMeASecret.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\Secret.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CyclicElementAt">
-      <HintPath>..\packages\CyclicElementAt.1.0.0\lib\CyclicElementAt.dll</HintPath>
+    <Reference Include="ElementAt, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ElementAt.2.0.0\lib\ElementAt.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
